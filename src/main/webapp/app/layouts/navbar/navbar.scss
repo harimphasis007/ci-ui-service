@@ -46,3 +46,19 @@ Logo styles
   background: url('../../../content/images/logo.png') no-repeat center center;
   background-size: contain;
 }
+
+/* ==========================================================================
+Dropdown styles
+============================================================================ */
+.dropdown-menu {
+  margin: 0;
+  padding: 0;
+  .dropdown-item {
+    padding: 0.5rem 1rem;
+  }
+  .dropdown-item:hover {
+    color: #fff !important;
+    font-weight: normal;
+    background-color: #3f8acd;
+  }
+}
