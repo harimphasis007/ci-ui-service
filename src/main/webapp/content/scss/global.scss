@@ -1,6 +1,7 @@
 @import 'bootstrap-variables';
 @import '~bootstrap/scss/functions';
 @import '~bootstrap/scss/variables';
+@import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
 /* ==============================================================
 Bootstrap tweaks
@@ -30,6 +31,11 @@ a:hover {
   color: $dropdown-link-hover-color;
 }
 
+.card {
+  background-color: transparent;
+  border-width: 0;
+  border-radius: 0;
+}
 /* ==========================================================================
 Browser Upgrade Prompt
 ========================================================================== */
@@ -180,3 +186,98 @@ ui bootstrap tweaks
 }
 
 /* jhipster-needle-scss-add-main JHipster will add new css style */
+
+.ci-card {
+  border: 1px solid #0c306e;
+  margin-top: 10px;
+  background-color: #ffffff;
+  .ci-card-title {
+    background-color: #0c306e;
+    color: #ffffff;
+    padding: 0.5rem;
+    font-weight: 100;
+    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-size: 1.5rem;
+  }
+}
+table {
+  &.mat-table {
+    width: 100%;
+    .gray {
+      background-color: #dee1e6;
+    }
+    tr.mat-header-row {
+      height: 35px;
+    }
+    tr.mat-row {
+      height: 40px;
+    }
+    td.mat-cell,
+    td.mat-footer-cell,
+    th.mat-header-cell {
+      border-bottom-width: 0;
+      border-bottom-style: none;
+      padding-left: 24px;
+    }
+    td.mat-cell {
+      border-right: 1px solid #dee1e6;
+    }
+    td.mat-cell:last-of-type {
+      border-right: none;
+    }
+  }
+}
+.btn {
+  border-radius: 0px;
+  &.btn-secondary {
+    background-color: #6c757e;
+  }
+}
+
+// override material paginator
+.header-page {
+  font-size: 1rem;
+  .mat-paginator {
+    display: inline-block;
+    background-color: transparent;
+    color: #ffffff;
+    .mat-form-field-infix {
+      background-color: #ffffff;
+      border: 1px solid #000;
+    }
+    .mat-form-field-wrapper {
+      padding-bottom: 0;
+    }
+    .mat-paginator-page-size-label,
+    .mat-form-field-underline {
+      display: none;
+    }
+    .mat-paginator-container {
+      padding: 0;
+      min-height: 45px;
+    }
+    .mat-paginator-page-size {
+      margin-right: 0;
+    }
+  }
+  .mat-paginator-range-actions {
+    display: none;
+  }
+}
+//.mat-paginator {
+//  .mat-paginator-container {
+//    justify-content: normal;
+//  }
+//
+//  // override material paginator page switch
+//  .mat-paginator-range-label {
+//    order: 2;
+//  }
+//
+//  .mat-paginator-navigation-previous {
+//    order: 1;
+//  }
+//  .mat-paginator-navigation-next {
+//    order: 3;
+//  }
+//}
