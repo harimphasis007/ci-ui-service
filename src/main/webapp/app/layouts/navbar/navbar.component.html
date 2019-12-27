@@ -7,7 +7,7 @@
         <fa-icon icon="bars"></fa-icon>
     </a>
     <div class="navbar-collapse collapse" id="navbarResponsive" [ngbCollapse]="isNavbarCollapsed" [ngSwitch]="isAuthenticated()">
-        <ul class="navbar-nav ml-auto">
+        <ul class="navbar-nav ml-sm-auto mr-auto">
 <!--            <li class="nav-item" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">-->
 <!--                <a class="nav-link" routerLink="/" (click)="collapseNavbar()">-->
 <!--                    <span>-->
@@ -27,7 +27,7 @@
                 </a>
                 <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="entity-menu">
                     <li>
-                        <a class="dropdown-item" routerLink="admin/metrics" routerLinkActive="active" (click)="collapseNavbar()">
+                        <a class="dropdown-item" routerLink="admin/projects" routerLinkActive="active" (click)="collapseNavbar()">
                             <span>Select Project</span>
                         </a>
                     </li>
@@ -39,6 +39,64 @@
                     <li>
                         <a class="dropdown-item" routerLink="admin/metrics" routerLinkActive="active" (click)="collapseNavbar()">
                             <span>Applications in Progress</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="dashboard-menu">
+                    <span>
+                        <span>Dashboards & Calculators</span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="dashboard-menu">
+                    <li>
+                        <a class="dropdown-item" routerLink="admin/metrics" routerLinkActive="active" (click)="collapseNavbar()">
+                            <span>Approval Queue</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="admin/metrics" routerLinkActive="active" (click)="collapseNavbar()">
+                            <span>BDA Calculator</span>
+                        </a>
+                    </li>
+                </ul>
+
+            </li>
+            <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="reports-menu">
+                    <span>
+                        <span>Reports</span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="reports-menu">
+                    <li>
+                        <a class="dropdown-item" routerLink="admin/metrics" routerLinkActive="active" (click)="collapseNavbar()">
+                            <span>Portfolio Report</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="admin/metrics" routerLinkActive="active" (click)="collapseNavbar()">
+                            <span>CICA FHFA Report</span>
+                        </a>
+                    </li>
+                </ul>
+            </li>
+            <li *jhiHasAnyAuthority="'ROLE_ADMIN'" ngbDropdown class="nav-item dropdown pointer" display="dynamic" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">
+                <a class="nav-link dropdown-toggle" ngbDropdownToggle href="javascript:void(0);" id="maintenance-menu">
+                    <span>
+                        <span>Maintenance</span>
+                    </span>
+                </a>
+                <ul class="dropdown-menu" ngbDropdownMenu aria-labelledby="maintenance-menu">
+                    <li>
+                        <a class="dropdown-item" routerLink="admin/metrics" routerLinkActive="active" (click)="collapseNavbar()">
+                            <span>Program</span>
+                        </a>
+                    </li>
+                    <li>
+                        <a class="dropdown-item" routerLink="admin/metrics" routerLinkActive="active" (click)="collapseNavbar()">
+                            <span>Program Groups</span>
                         </a>
                     </li>
                 </ul>

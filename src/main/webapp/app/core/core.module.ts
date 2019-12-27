@@ -4,6 +4,7 @@ import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { Title } from '@angular/platform-browser';
 import { FaIconLibrary } from '@fortawesome/angular-fontawesome';
 import { fas } from '@fortawesome/free-solid-svg-icons';
+import { far } from '@fortawesome/free-regular-svg-icons';
 import { CookieModule } from 'ngx-cookie';
 import { NgxWebstorageModule } from 'ngx-webstorage';
 import { NgJhipsterModule } from 'ng-jhipster';
@@ -65,6 +66,7 @@ export class CommunityinvestmentCoreModule {
   constructor(iconLibrary: FaIconLibrary, dpConfig: NgbDatepickerConfig) {
     registerLocaleData(locale);
     iconLibrary.addIconPacks(fas);
+    iconLibrary.addIconPacks(far);
     iconLibrary.addIcons(...fontAwesomeIcons);
     dpConfig.minDate = { year: moment().year() - 100, month: 1, day: 1 };
   }
