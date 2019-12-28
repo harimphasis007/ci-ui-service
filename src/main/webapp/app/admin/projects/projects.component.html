@@ -5,18 +5,14 @@
             <span class="header-page">
                 Show <mat-paginator #paginator [pageSizeOptions]="[5, 10, 20]"></mat-paginator> entries
             </span>
-            <button class="btn btn-secondary" (click)="exporter.exportTable('csv')">
-                <fa-icon [icon]="['far', 'file']"></fa-icon>
-                CSV</button>
-            <button class="btn btn-secondary" (click)="exporter.exportTable('xls')">
-                <fa-icon icon="file-excel"></fa-icon> XLS</button>
-            <button class="btn btn-secondary ml-1"><fa-icon icon="sync-alt"></fa-icon> Refresh</button>
+            <button class="btn btn-secondary px-3" (click)="exporter.exportTable('csv')"><fa-icon [icon]="['far', 'file']" class="mr-2"></fa-icon>CSV</button>
+            <button class="btn btn-secondary px-3" (click)="exporter.exportTable('xls')"><fa-icon icon="file-excel" class="mr-2"></fa-icon>XLS</button>
+            <button class="btn btn-secondary ml-2 px-3"><fa-icon icon="sync-alt" class="mr-2"></fa-icon>Refresh</button>
         </div>
         <div class="clearfix"></div>
     </div>
     <div class="m-3">
-
-        <table mat-table matTableExporter [dataSource]="dataSource" matSort class="mat-elevation-z8" #exporter="matTableExporter">
+         <table mat-table matTableExporter [dataSource]="dataSource" matSort class="mat-elevation-z8" #exporter="matTableExporter">
 
             <!-- Position Column -->
             <ng-container matColumnDef="position">
@@ -54,5 +50,82 @@
 <div class="ci-card">
     <div class="ci-card-title">
         Search Controls
+    </div>
+    <div class="ml-3 mr-3 mt-4 mb-4">
+        <div class="row">
+            <div class="col-sm-3">
+                <div><label>Project No</label></div>
+                <div class="mr-5">
+                    <input class="form-control" type="text" />
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div>
+                    <label>Project Name</label>
+                </div>
+                <div class="mr-5">
+                    <input class="form-control" type="text" />
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <div>
+                <label>Program</label></div>
+                <div class="mr-5">
+                <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Project Status</label>
+                <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="ml-3 mr-3 mt-5 mb-5">
+        <div class="row">
+            <div class="col-sm-3">
+                <label>Comittment Status</label>
+                <div class="mr-5">
+                <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                </div>
+            </div>
+            <div class="col-sm-3">
+                <label>Member</label>
+                <div class="mr-5">
+                <select class="form-control">
+                    <option>1</option>
+                    <option>2</option>
+                    <option>3</option>
+                    <option>4</option>
+                    <option>5</option>
+                </select>
+                </div>
+            </div>
+            <div class="col-sm-3">&nbsp;</div>
+            <div class="col-sm-3">
+                <div class="float-right">
+                    &nbsp;<br />
+                    <button class="btn btn-primary px-3"><fa-icon icon="search" class="mr-2"></fa-icon>Search</button>
+                    <button class="btn btn-secondary ml-2 px-3" routerLink="detail">Reset</button>
+                </div>
+            </div>
+        </div>
     </div>
 </div>

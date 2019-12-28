@@ -3,6 +3,12 @@ import { RouterModule } from '@angular/router';
 import { CommunityinvestmentSharedModule } from 'app/shared/shared.module';
 
 import { ProjectsComponent } from './projects.component';
+import { ProjectDetailComponent } from './projectdetail.component';
+import { ProjectReviewComponent } from './projectreview.component';
+import { ProjectActivityComponent } from './projectactivity.component';
+import { ProjectPoolComponent } from './projectpool.component';
+import { ProjectContactsComponent } from './projectcontacts.component';
+import { ProjectLogComponent } from './projectlog.component';
 
 import { projectsRoute } from './projects.route';
 import { MatTableModule } from '@angular/material/table';
@@ -14,7 +20,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
 @NgModule({
   imports: [
     CommunityinvestmentSharedModule,
-    RouterModule.forChild([projectsRoute]),
+    RouterModule.forChild(projectsRoute),
     MatTableModule,
     MatSortModule,
     MatButtonModule,
@@ -22,6 +28,14 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     MatPaginatorModule
   ],
   exports: [MatTableModule, MatPaginatorModule],
-  declarations: [ProjectsComponent]
+  declarations: [
+    ProjectsComponent,
+    ProjectDetailComponent,
+    ProjectReviewComponent,
+    ProjectActivityComponent,
+    ProjectPoolComponent,
+    ProjectContactsComponent,
+    ProjectLogComponent
+  ]
 })
 export class ProjectsModule {}

@@ -232,6 +232,9 @@ table {
   &.btn-secondary {
     background-color: #6c757e;
   }
+  &.btn-primary {
+    background-color: #0c306e;
+  }
 }
 
 // override material paginator
@@ -281,3 +284,28 @@ table {
 //    order: 3;
 //  }
 //}
+.project-tabs {
+  div {
+    color: #000000;
+    border-right: 1px solid #bfbfbf;
+    border-bottom: 1px solid #bfbfbf;
+    text-align: center;
+    cursor: pointer;
+    &:last-of-type {
+      border-rightm-width: 0px;
+    }
+    &.active-tab {
+      background-color: #0c306e;
+      color: #ffffff;
+    }
+  }
+}
+.project-check-group {
+  border: 1px solid #c8c8c8;
+}
+.form-control {
+  border-radius: 0;
+}
+.bdr-left-green {
+  border-left: 8px solid #047d04;
+}
