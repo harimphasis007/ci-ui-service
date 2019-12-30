@@ -1,25 +1,34 @@
 import { Injectable } from '@angular/core';
-import { of } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ProjectsService {
-  projectsList: Array<object> = [
-    { position: 1, name: 'Hydrogen', weight: 1.0079, symbol: 'Hjjjj' },
-    { position: 2, name: 'Helium', weight: 4.0026, symbol: 'He' },
-    { position: 3, name: 'Lithium', weight: 6.941, symbol: 'Li' },
-    { position: 4, name: 'Beryllium', weight: 9.0122, symbol: 'Be' },
-    { position: 5, name: 'Boron', weight: 10.811, symbol: 'B' },
-    { position: 6, name: 'Carbon', weight: 12.0107, symbol: 'C' },
-    { position: 7, name: 'Nitrogen', weight: 14.0067, symbol: 'N' },
-    { position: 8, name: 'Oxygen', weight: 15.9994, symbol: 'O' },
-    { position: 9, name: 'Fluorine', weight: 18.9984, symbol: 'F' },
-    { position: 10, name: 'Neon', weight: 20.1797, symbol: 'Ne' }
-  ];
-
-  constructor() {}
+  // projectsList: Array<object> = [
+  //   {"projectNo":"5000","projName":"2019 CIP #5000","program":"CIP","member":"#1 - MEMBER 1","projectStatus":"In Review","commitmentStatus":"Inactive","commitmentBalance":0.0,"commitmentExpiration":null,"cisProgramType":null,"projEffDate":null,"custNo":null,"custContactId":null},
+  //   {"projectNo":"4999","projName":"2019 UDA #4999","program":"UDA","member":"#2 - MEMBER 2","projectStatus":"Approved","commitmentStatus":"Active","commitmentBalance":2.2E7,"commitmentExpiration":"2019-12-28T23:37:04.653Z","cisProgramType":null,"projEffDate":null,"custNo":null,"custContactId":null},
+  //   {"projectNo":"4998","projName":"2019 RDA #4998","program":"RDA","member":"#3- MEMBER 3","projectStatus":"Approved","commitmentStatus":"Inactive","commitmentBalance":0.0,"commitmentExpiration":"2019-12-28T23:37:04.653Z","cisProgramType":null,"projEffDate":null,"custNo":null,"custContactId":null}
+  //   ];
+  constructor(private httpClient: HttpClient) {}
+  // getProjectList() {
+  //   return of(this.projectsList);
+  // }
   getProjectList() {
-    return of(this.projectsList);
+    return this.httpClient.get(
+      'https://cors-anywhere.herokuapp.com/http://businessservice-env.sg2edg3sm2.us-east-1.elasticbeanstalk.com:5000/services/businesservice/projects/getProjects'
+    );
+  }
+
+  getSearchControls() {
+    return this.httpClient.get(
+      'https://cors-anywhere.herokuapp.com/http://businessservice-env.sg2edg3sm2.us-east-1.elasticbeanstalk.com:5000/services/businesservice/projects/getSearchControls'
+    );
+  }
+  getProjectInfoBeneficiaries(projectNo: any) {
+    return this.httpClient.get(
+      'https://cors-anywhere.herokuapp.com/http://businessservice-env.sg2edg3sm2.us-east-1.elasticbeanstalk.com:5000/services/businesservice/projects/getProjectInfoBeneficiaries?projectNo=' +
+        projectNo
+    );
   }
 }

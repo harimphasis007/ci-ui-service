@@ -1,11 +1,37 @@
+<div class="row">
+    <div class="col">
+        <div class="float-left">
+            <ol class="breadcrumb mb-0">
+                <li class="breadcrumb-item">
+                    <a href="#">Home</a>
+                </li>
+                <li class="breadcrumb-item">
+                    <span>Projects</span>
+                </li>
+                <li class="breadcrumb-item">
+                    <a href="#">#{{projectNo}}</a>
+                </li>
+            </ol>
+        </div>
+        <div class="float-right">
+            <div class="mt-2">
+                <button class="btn btn-primary bread-btn mr-2"><span class="font-weight-bold">Program:</span> CIP</button>
+                <button class="btn btn-primary bread-btn mr-2"><span class="font-weight-bold">Status:</span> In Review</button>
+                <button class="btn btn-primary bread-btn"><span class="font-weight-bold">Member:</span> #1 - Member #1</button>
+            </div>
+        </div>
+        <div class="clearfix"></div>
+    </div>
+</div>
+
 <div class="ci-card">
     <div class="d-flex bd-highlight project-tabs">
-        <div class="p-2 flex-fill bd-highlight" routerLink="../detail">Info & Beneficiaries</div>
-        <div class="p-2 flex-fill bd-highlight active-tab" routerLink="../review">Application Review</div>
-        <div class="p-2 flex-fill bd-highlight" routerLink="../pool">Loan Pool</div>
-        <div class="p-2 flex-fill bd-highlight" routerLink="../activity">Commitment & Advance Activity</div>
-        <div class="p-2 flex-fill bd-highlight" routerLink="../contacts">Email Notification & Contacts</div>
-        <div class="p-2 flex-fill bd-highlight" routerLink="../log">Project Log</div>
+        <div class="p-2 flex-fill bd-highlight" [routerLink]="['../../detail/', projectNo]">Info & Beneficiaries</div>
+        <div class="p-2 flex-fill bd-highlight active-tab" [routerLink]="['../../review/', projectNo]">Application Review</div>
+        <div class="p-2 flex-fill bd-highlight" [routerLink]="['../../pool/', projectNo]">Loan Pool</div>
+        <div class="p-2 flex-fill bd-highlight" [routerLink]="['../../activity/', projectNo]">Commitment & Advance Activity</div>
+        <div class="p-2 flex-fill bd-highlight" [routerLink]="['../../contacts/', projectNo]">Email Notification & Contacts</div>
+        <div class="p-2 flex-fill bd-highlight" [routerLink]="['../../log/', projectNo]">Project Log</div>
     </div>
 
     <div class="m-2">
