@@ -203,6 +203,7 @@ ui bootstrap tweaks
 table {
   &.mat-table {
     width: 100%;
+    box-shadow: none;
     .gray {
       background-color: #dee1e6;
     }
@@ -220,13 +221,20 @@ table {
       padding-left: 24px;
     }
     td.mat-cell {
-      border-right: 1px solid #dee1e6;
+      border-right: 1px solid #c5c5c6;
+      color: #000000;
     }
     td.mat-cell:last-of-type {
       border-right: none;
     }
+    th.mat-header-cell {
+      font-weight: bold;
+      color: #000000;
+      font-size: 14px;
+    }
   }
 }
+
 .btn {
   border-radius: 0px;
   &.btn-secondary {
@@ -308,4 +316,126 @@ table {
 }
 .bdr-left-green {
   border-left: 8px solid #047d04;
+}
+
+/* Cusror */
+.cursor-alias {
+  cursor: alias;
+}
+.cursor-all-scroll {
+  cursor: all-scroll;
+}
+.cursor-auto {
+  cursor: auto;
+}
+.cursor-cell {
+  cursor: cell;
+}
+.cursor-context-menu {
+  cursor: context-menu;
+}
+.cursor-col-resize {
+  cursor: col-resize;
+}
+.cursor-copy {
+  cursor: copy;
+}
+.cursor-crosshair {
+  cursor: crosshair;
+}
+.cursor-default {
+  cursor: default;
+}
+.cursor-e-resize {
+  cursor: e-resize;
+}
+.cursor-ew-resize {
+  cursor: ew-resize;
+}
+.cursor-grab {
+  cursor: grab;
+}
+.cursor-grabbing {
+  cursor: grabbing;
+}
+.cursor-help {
+  cursor: help;
+}
+.cursor-move {
+  cursor: move;
+}
+.cursor-n-resize {
+  cursor: n-resize;
+}
+.cursor-ne-resize {
+  cursor: ne-resize;
+}
+.cursor-nesw-resize {
+  cursor: nesw-resize;
+}
+.cursor-ns-resize {
+  cursor: ns-resize;
+}
+.cursor-nw-resize {
+  cursor: nw-resize;
+}
+.cursor-nwse-resize {
+  cursor: nwse-resize;
+}
+.cursor-no-drop {
+  cursor: no-drop;
+}
+.cursor-none {
+  cursor: none;
+}
+.cursor-not-allowed {
+  cursor: not-allowed;
+}
+.cursor-pointer {
+  cursor: pointer;
+}
+.cursor-progress {
+  cursor: progress;
+}
+.cursor-row-resize {
+  cursor: row-resize;
+}
+.cursor-s-resize {
+  cursor: s-resize;
+}
+.cursor-se-resize {
+  cursor: se-resize;
+}
+.cursor-sw-resize {
+  cursor: sw-resize;
+}
+.cursor-text {
+  cursor: text;
+}
+.cursor-w-resize {
+  cursor: w-resize;
+}
+.cursor-wait {
+  cursor: wait;
+}
+.cursor-zoom-in {
+  cursor: zoom-in;
+}
+.cursor-zoom-out {
+  cursor: zoom-out;
+}
+/* Cursors */
+.breadcrumb {
+  background-color: transparent;
+  a,
+  a:hover {
+    color: #3e8acc;
+    font-weight: normal;
+  }
+}
+.bread-btn {
+  background-color: #3f8acd !important;
+  color: #ffffff;
+  border-radius: 8px;
+  padding: 5px 40px;
 }
