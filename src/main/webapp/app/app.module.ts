@@ -8,6 +8,7 @@ import { CommunityinvestmentAppRoutingModule } from './app-routing.module';
 import { CommunityinvestmentHomeModule } from './home/home.module';
 import { CommunityinvestmentEntityModule } from './entities/entity.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 // jhipster-needle-angular-add-module-import JHipster will add new module here
 import { JhiMainComponent } from './layouts/main/main.component';
@@ -25,7 +26,9 @@ import { ErrorComponent } from './layouts/error/error.component';
     // jhipster-needle-angular-add-module JHipster will add new module here
     CommunityinvestmentEntityModule,
     CommunityinvestmentAppRoutingModule,
-    BrowserAnimationsModule
+    BrowserAnimationsModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   declarations: [JhiMainComponent, NavbarComponent, ErrorComponent, PageRibbonComponent, FooterComponent],
   bootstrap: [JhiMainComponent]
