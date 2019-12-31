@@ -218,7 +218,7 @@ table {
     th.mat-header-cell {
       border-bottom-width: 0;
       border-bottom-style: none;
-      padding-left: 24px;
+      padding: 0 24px;
     }
     td.mat-cell {
       border-right: 1px solid #c5c5c6;
@@ -438,4 +438,17 @@ table {
   color: #ffffff;
   border-radius: 8px;
   padding: 5px 40px;
+}
+
+.modal-content {
+  .modal-header {
+    &.custom {
+      background-color: #0c306e;
+      color: #ffffff;
+      padding: 0.5rem;
+    }
+  }
+  .modal-footer {
+    border-top-width: 0px !important;
+  }
 }
