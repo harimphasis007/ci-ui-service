@@ -31,4 +31,32 @@ export class ProjectsService {
         projectNo
     );
   }
+
+  searchProject(queryParam: any) {
+    return this.httpClient.get(
+      'https://cors-anywhere.herokuapp.com/http://businessservice-env.sg2edg3sm2.us-east-1.elasticbeanstalk.com:5000/services/businesservice/projects/searchProject?' +
+        queryParam
+    );
+  }
+
+  getApplicationReviewDetails(projectNo: any) {
+    return this.httpClient.get(
+      'https://cors-anywhere.herokuapp.com/http://businessservice-env.sg2edg3sm2.us-east-1.elasticbeanstalk.com:5000/services/businesservice/projects/getApplicationReviewDetails?projectNo=' +
+        projectNo
+    );
+  }
+
+  getEmailNotificationsAndContacts(projectNo: any) {
+    return this.httpClient.get(
+      'https://cors-anywhere.herokuapp.com/http://businessservice-env.sg2edg3sm2.us-east-1.elasticbeanstalk.com:5000/services/businesservice/projects/getEmailNotificationsAndContacts?projectNo=' +
+        projectNo
+    );
+  }
+
+  getProjectLog(projectNo: any) {
+    return this.httpClient.get(
+      'https://cors-anywhere.herokuapp.com/http://businessservice-env.sg2edg3sm2.us-east-1.elasticbeanstalk.com:5000/services/businesservice/projects/getProjectLog?projectNo=' +
+        projectNo
+    );
+  }
 }
