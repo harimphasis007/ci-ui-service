@@ -29,6 +29,14 @@ import { RouterModule } from '@angular/router';
       {
         path: 'projects',
         loadChildren: () => import('./projects/projects.module').then(m => m.ProjectsModule)
+      },
+      {
+        path: 'pipeline',
+        loadChildren: () => import('./pipeline/projectpipeline.module').then(m => m.ProjectPipelineModule)
+      },
+      {
+        path: 'reviewlist',
+        loadChildren: () => import('./reviewlist/projectreviewlist.module').then(m => m.ProjectReviewListModule)
       }
       /* jhipster-needle-add-admin-route - JHipster will add admin routes here */
     ])
