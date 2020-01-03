@@ -48,7 +48,7 @@
                 <!-- Project Date Column -->
                 <ng-container matColumnDef="projectDate">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-                    <td mat-cell *matCellDef="let element"> {{element.projectDate}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.projectDate | date:'MM/dd/y hh:mm a'}} </td>
                 </ng-container>
 
                 <!-- Project User Column -->
@@ -103,46 +103,48 @@
 </div>
 
 <ng-template #content let-c="close" let-d="dismiss" class="abc">
-    <div class="modal-header custom">
-        <h4 class="modal-title" id="modal-basic-title">Project Log</h4>
-    </div>
-    <div class="modal-body">
-        <div class="row mt-5 mb-3">
-            <div class="col-sm-4">
-                <div class="text-right"><span class="font-weight-bold">Date</span></div>
+    <form [formGroup]="addLogForm">
+        <div class="modal-header custom">
+            <h4 class="modal-title" id="modal-basic-title">Project Log</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row mt-5 mb-3">
+                <div class="col-sm-4">
+                    <div class="text-right"><span class="font-weight-bold">Date</span></div>
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" formControlName="addLogDate" [value]="currentDate | date : 'MM/dd/yyyy hh:mm a'" />
+                </div>
+                <div class="col-sm-4">
+                    &nbsp;
+                </div>
             </div>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" />
+            <div class="row my-3">
+                <div class="col-sm-4">
+                    <div class="text-right"><span class="font-weight-bold">User</span></div>
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control" formControlName="addLogUser" />
+                </div>
+                <div class="col-sm-4">
+                    &nbsp;
+                </div>
             </div>
-            <div class="col-sm-4">
-                &nbsp;
+            <div class="row mb-4">
+                <div class="col-sm-4">
+                    <div class="text-right"><span class="font-weight-bold">Entry Details</span></div>
+                </div>
+                <div class="col-sm-4">
+                    <input type="text" class="form-control bdr-left-green" formControlName="addLogEntry" />
+                </div>
+                <div class="col-sm-4">
+                    &nbsp;
+                </div>
             </div>
         </div>
-        <div class="row my-3">
-            <div class="col-sm-4">
-                <div class="text-right"><span class="font-weight-bold">User</span></div>
-            </div>
-            <div class="col-sm-4">
-                <input type="text" class="form-control" />
-            </div>
-            <div class="col-sm-4">
-                &nbsp;
-            </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary px-3" (click)="addLog();c('Save click')"><fa-icon [icon]="['far', 'save']" class="mr-2"></fa-icon>Save</button>
+            <button ngbAutofocus class="btn btn-secondary ml-2 px-3" (click)="c('Cancel click')"><fa-icon icon="ban" class="mr-2"></fa-icon>Cancel</button>
         </div>
-        <div class="row mb-4">
-            <div class="col-sm-4">
-                <div class="text-right"><span class="font-weight-bold">Entry Details</span></div>
-            </div>
-            <div class="col-sm-4">
-                <input type="text" class="form-control bdr-left-green" />
-            </div>
-            <div class="col-sm-4">
-                &nbsp;
-            </div>
-        </div>
-    </div>
-    <div class="modal-footer">
-        <button class="btn btn-primary px-3"><fa-icon [icon]="['far', 'save']" class="mr-2"></fa-icon>Save</button>
-        <button ngbAutofocus class="btn btn-secondary ml-2 px-3" (click)="c('Cancel click')"><fa-icon icon="ban" class="mr-2"></fa-icon>Cancel</button>
-    </div>
+    </form>
 </ng-template>

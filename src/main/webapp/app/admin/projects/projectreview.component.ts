@@ -12,6 +12,8 @@ export class ProjectReviewComponent implements OnInit {
   snapshotForm: FormGroup;
   reviewForm: FormGroup;
   reviewInfo: any;
+  runningCreditCheck: boolean;
+  creditCheckResult: any;
   constructor(private activatedRoute: ActivatedRoute, private fb: FormBuilder, private projectsService: ProjectsService) {
     this.activatedRoute.paramMap.subscribe(params => {
       this.projectNo = +params.get('projectNo');
@@ -53,6 +55,12 @@ export class ProjectReviewComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.runningCreditCheck = false;
+    this.creditCheckResult = {
+      result: '',
+      msg:
+        'Results of Credit Check (if integration with credit check web service is feasible) (system runs credit check automatically at time of import and stores results, with ability for user to re-run at anytime during application review phase)'
+    };
     this.snapshotForm = this.fb.group({
       applicationDate: [{ value: null, disabled: true }],
       totalAmountRequested: [{ value: null, disabled: true }],
@@ -80,6 +88,23 @@ export class ProjectReviewComponent implements OnInit {
       managerReviewStartDate: [{ value: null, disabled: true }],
       managerTurntime: [{ value: null, disabled: true }],
       managerComments: [{ value: null, disabled: true }]
+    });
+  }
+
+  runCreditCheck() {
+    this.runningCreditCheck = true;
+    this.projectsService.getCreditCheck(this.projectNo).subscribe((res: any) => {
+      setTimeout(() => {
+        this.runningCreditCheck = false;
+        if (res) {
+          this.creditCheckResult = { result: 'success', msg: 'Credit check passed!' };
+        } else {
+          this.creditCheckResult = { result: 'failed', msg: 'Credit check failed!' };
+        }
+      }, 3000);
+      //
+      // eslint-disable-next-line no-console
+      console.log(res);
     });
   }
 }
