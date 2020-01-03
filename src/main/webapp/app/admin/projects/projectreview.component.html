@@ -38,69 +38,71 @@
         <div><label class="font-weight-bold">Application & Review Snapshot</label></div>
         <div class="project-check-group p-2">
             <div style="width: 100%; display: flex; flex-wrap: wrap;">
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="py-2 pr-2">
-                        <div><label>Application Date</label></div>
-                        <div><input type="text" class="form-control" formControlName="applicationDate" /></div>
+                        <div class="text-truncate"><label class="text-truncate d-block" title="Application Date">Application Date</label></div>
+                        <div>
+                            <input type="text" class="form-control" formControlName="applicationDate" [value]="snapshotForm.get('applicationDate').value | date:'MM/dd/y'" />
+                        </div>
                     </div>
                 </div>
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
-                        <div><label>Total Amount Requested</label></div>
+                        <div><label class="text-truncate d-block" title="Total Amount Requested">Total Amount Requested</label></div>
                         <div><input type="text" class="form-control" formControlName="totalAmountRequested" /></div>
                     </div>
                 </div>
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
-                        <div><label>Analyst Review End Date</label></div>
-                        <div><input type="text" class="form-control" formControlName="analystReviewEndDate" /></div>
+                        <div><label class="text-truncate d-block" title="Analyst Review End Date">Analyst Review End Date</label></div>
+                        <div><input type="text" class="form-control" formControlName="analystReviewEndDate" [value]="snapshotForm.get('analystReviewEndDate').value | date:'MM/dd/y'" /></div>
                     </div>
                 </div>
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
-                        <div><label>Manager Decision</label></div>
+                        <div><label class="text-truncate d-block" title="Manager Decision">Manager Decision</label></div>
                         <div><input type="text" class="form-control" formControlName="managerDecision" /></div>
                     </div>
                 </div>
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
-                        <div><label>Manager Review End Date</label></div>
-                        <div><input type="text" class="form-control" formControlName="managerReviewEndDate" /></div>
+                        <div><label class="text-truncate d-block" title="Manager Review End Date">Manager Review End Date</label></div>
+                        <div><input type="text" class="form-control" formControlName="managerReviewEndDate" [value]="snapshotForm.get('managerReviewEndDate').value | date:'MM/dd/y'" /></div>
                     </div>
                 </div>
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
-                        <div><label>Total Review Turntime</label></div>
+                        <div><label class="text-truncate d-block" title="Total Review Turntime">Total Review Turntime</label></div>
                         <div><input type="text" class="form-control" formControlName="totalReviewTurntime" /></div>
                     </div>
                 </div>
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="py-2 pl-2">
-                        <div><label>Notification Sent Date</label></div>
-                        <div><input type="text" class="form-control" formControlName="notificationSentDate" /></div>
+                        <div><label class="text-truncate d-block" title="Notification Sent Date">Notification Sent Date</label></div>
+                        <div><input type="text" class="form-control" formControlName="notificationSentDate" [value]="snapshotForm.get('notificationSentDate').value | date:'MM/dd/y'" /></div>
                     </div>
                 </div>
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="py-2 pr-2">
-                        <div><label>Certification: Name</label></div>
+                        <div><label class="text-truncate d-block" title="Certification: Name">Certification: Name</label></div>
                         <div><input type="text" class="form-control bdr-left-green" formControlName="certifiationName" /></div>
                     </div>
                 </div>
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
-                        <div><label>Certification: Title</label></div>
+                        <div><label class="text-truncate d-block" title="Certification: Title">Certification: Title</label></div>
                         <div><input type="text" class="form-control bdr-left-green" formControlName="certificationTitle" /></div>
                     </div>
                 </div>
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
-                        <div><label>Certification: Date</label></div>
-                        <div><input type="text" class="form-control bdr-left-green" formControlName="certificationDate" /></div>
+                        <div><label class="text-truncate d-block" title="Certification: Date">Certification: Date</label></div>
+                        <div><input type="text" class="form-control bdr-left-green" formControlName="certificationDate" [value]="snapshotForm.get('certificationDate').value | date:'MM/dd/y'" /></div>
                     </div>
                 </div>
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
-                        <div><label>Project Specific Application</label></div>
+                        <div><label class="text-truncate d-block" title="Project Specific Application">Project Specific Application</label></div>
                         <div>
                             <select class="form-control" formControlName="projectSpecificApplication">
                                 <option value="true">Yes</option>
@@ -109,39 +111,39 @@
                         </div>
                     </div>
                 </div>
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
-                        <div><label>Project Name (Member Specified)</label></div>
+                        <div><label class="text-truncate d-block" title="Project Name (Member Specified)">Project Name (Member Specified)</label></div>
                         <div><input type="text" class="form-control" formControlName="projectNameMemberSpecified" /></div>
                     </div>
                 </div>
-                <div style="flex: 0 0 28.56%;">
+                <div style="flex: 0 0 28.56%; min-width: 0">
                     <div class="py-2 pl-2">
-                        <div><label>Description of the Project (if applicable)</label></div>
+                        <div><label class="text-truncate d-block" title="Description of the Project (if applicable)">Description of the Project (if applicable)</label></div>
                         <div><input type="text" class="form-control" formControlName="projectDescription" /></div>
                     </div>
                 </div>
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="py-2 pr-2">
-                        <div><label>Current Review Status</label></div>
+                        <div><label class="text-truncate d-block" title="Current Review Status">Current Review Status</label></div>
                         <div><input type="text" class="form-control" formControlName="currentReviewStatus" /></div>
                     </div>
                 </div>
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
-                        <div><label>Current Assingment</label></div>
+                        <div><label class="text-truncate d-block" title="Current Assingment">Current Assingment</label></div>
                         <div><input type="text" class="form-control" formControlName="currentAssignment" /></div>
                     </div>
                 </div>
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
-                        <div><label>Current Assingment Start Date</label></div>
-                        <div><input type="text" class="form-control" formControlName="currentAssignmentStartDate" /></div>
+                        <div><label class="text-truncate d-block" title="Current Assingment Start Date">Current Assingment Start Date</label></div>
+                        <div><input type="text" class="form-control" formControlName="currentAssignmentStartDate" [value]="snapshotForm.get('currentAssignmentStartDate').value | date:'MM/dd/y'" /></div>
                     </div>
                 </div>
-                <div style="flex: 0 0 14.28%;">
+                <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
-                        <div><label>Current Turntime (Days Elapsed)</label></div>
+                        <div><label class="text-truncate d-block" title="Current Turntime (Days Elapsed)">Current Turntime (Days Elapsed)</label></div>
                         <div><input type="text" class="form-control" formControlName="currentTurntimeDaysElapsed" /></div>
                     </div>
                 </div>
@@ -159,13 +161,15 @@
     <div class="mx-2 my-4">
         <div><label class="font-weight-bold">Credit Check</label></div>
         <div style="background-color: #c8c8c8; text-align: center" class="p-4 my-2">
-            Results of Credit Check (if integration with credit check web service is feasible) (system runs credit check automatically at time of import and stores results, with ability for user to re-run at anytime during application review phase)
+            <div [ngClass]="creditCheckResult?.result === '' ? '' : (creditCheckResult?.result === 'success' ? 'text-success font-weight-bold' : 'text-danger font-weight-bold')"><fa-icon *ngIf="creditCheckResult?.result === 'success'" class="mr-2" icon="check-circle"></fa-icon><fa-icon *ngIf="creditCheckResult?.result === 'failed'" class="mr-2" icon="times-circle"></fa-icon>{{creditCheckResult?.msg}}</div>
         </div>
     </div>
 
     <div class="mx-2 my-4">
         <div class="float-right">
-            <button class="btn btn-primary px-3"><fa-icon [icon]="['far', 'file-alt']" class="mr-2"></fa-icon>Run Credit Check</button>
+            <button [ngClass]="runningCreditCheck ? 'btn-secondary' : 'btn-primary'" class="btn px-3" (click)="runCreditCheck()">
+                <fa-icon *ngIf="!runningCreditCheck" [icon]="['far', 'file-alt']" class="mr-2"></fa-icon>
+                <fa-icon *ngIf="runningCreditCheck" icon="spinner" [spin]="true" class="mr-2"></fa-icon>Run Credit Check</button>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -173,39 +177,39 @@
             <div><label class="font-weight-bold">Analyst Review</label></div>
             <div class="project-check-group p-2">
                 <div style="width: 100%; display: flex; flex-wrap: wrap;">
-                    <div style="flex: 0 0 15%;">
+                    <div style="flex: 0 0 15%; min-width: 0">
                         <div class="p-2">
-                            <div><label>Assigned Analyst</label></div>
+                            <div><label class="text-truncate d-block" title="Assigned Analyst">Assigned Analyst</label></div>
                             <div><input type="text" class="form-control" formControlName="assignedAnalyst" /></div>
                         </div>
                     </div>
-                    <div style="flex: 0 0 15%;">
+                    <div style="flex: 0 0 15%; min-width: 0">
                         <div class="p-2">
-                            <div><label>Review Start Date</label></div>
-                            <div><input type="text" class="form-control" formControlName="analystReviewStartDate" /></div>
+                            <div><label class="text-truncate d-block" title="Review Start Date">Review Start Date</label></div>
+                            <div><input type="text" class="form-control" formControlName="analystReviewStartDate" [value]="snapshotForm.get('analystReviewStartDate').value | date:'MM/dd/y'" /></div>
                         </div>
                     </div>
-                    <div style="flex: 0 0 15%;">
+                    <div style="flex: 0 0 15%; min-width: 0">
                         <div class="p-2">
-                            <div><label>Review End Date</label></div>
-                            <div><input type="text" class="form-control" formControlName="analystReviewEndDate" /></div>
+                            <div><label class="text-truncate d-block" title="Review End Date">Review End Date</label></div>
+                            <div><input type="text" class="form-control" formControlName="analystReviewEndDate" [value]="snapshotForm.get('analystReviewEndDate').value | date:'MM/dd/y'" /></div>
                         </div>
                     </div>
-                    <div style="flex: 0 0 15%;">
+                    <div style="flex: 0 0 15%; min-width: 0">
                         <div class="p-2">
-                            <div><label>Turntime</label></div>
+                            <div><label class="text-truncate d-block" title="Turntime">Turntime</label></div>
                             <div><input type="text" class="form-control" formControlName="analystTurntime" /></div>
                         </div>
                     </div>
-                    <div style="flex: 0 0 25%;">
+                    <div style="flex: 0 0 25%; min-width: 0">
                         <div class="p-2">
-                            <div><label>Comments</label></div>
+                            <div><label class="text-truncate d-block" title="Comments">Comments</label></div>
                             <div><input type="text" class="form-control" formControlName="analystComments" /></div>
                         </div>
                     </div>
-                    <div style="flex: 0 0 15%;">
+                    <div style="flex: 0 0 15%; min-width: 0">
                         <div class="p-2">
-                            <div><label>Recommendation</label></div>
+                            <div><label class="text-truncate d-block" title="Recommendation">Recommendation</label></div>
                             <div>
                                 <select class="form-control" formControlName="analystRecommendation">
                                     <option value="null">Select Recommendation</option>
@@ -221,39 +225,39 @@
             <div><label class="font-weight-bold">Manager Review</label></div>
             <div class="project-check-group p-2">
                 <div style="width: 100%; display: flex; flex-wrap: wrap;">
-                    <div style="flex: 0 0 15%;">
+                    <div style="flex: 0 0 15%; min-width: 0">
                         <div class="p-2">
-                            <div><label>Assigned Manager</label></div>
+                            <div><label class="text-truncate d-block" title="Assigned Manager">Assigned Manager</label></div>
                             <div><input type="text" class="form-control" formControlName="assinedManager" /></div>
                         </div>
                     </div>
-                    <div style="flex: 0 0 15%;">
+                    <div style="flex: 0 0 15%; min-width: 0">
                         <div class="p-2">
-                            <div><label>Review Start Date</label></div>
-                            <div><input type="text" class="form-control" formControlName="managerReviewStartDate" /></div>
+                            <div><label class="text-truncate d-block" title="Review Start Date">Review Start Date</label></div>
+                            <div><input type="text" class="form-control" formControlName="managerReviewStartDate" [value]="snapshotForm.get('managerReviewStartDate').value | date:'MM/dd/y'" /></div>
                         </div>
                     </div>
-                    <div style="flex: 0 0 15%;">
+                    <div style="flex: 0 0 15%; min-width: 0">
                         <div class="p-2">
-                            <div><label>Review End Date</label></div>
-                            <div><input type="text" class="form-control" formControlName="managerReviewEndDate" /></div>
+                            <div><label class="text-truncate d-block" title="Review End Date">Review End Date</label></div>
+                            <div><input type="text" class="form-control" formControlName="managerReviewEndDate" [value]="snapshotForm.get('managerReviewEndDate').value | date:'MM/dd/y'" /></div>
                         </div>
                     </div>
-                    <div style="flex: 0 0 15%;">
+                    <div style="flex: 0 0 15%; min-width: 0">
                         <div class="p-2">
-                            <div><label>Turntime</label></div>
+                            <div><label class="text-truncate d-block" title="Turntime">Turntime</label></div>
                             <div><input type="text" class="form-control" formControlName="managerTurntime" /></div>
                         </div>
                     </div>
-                    <div style="flex: 0 0 25%;">
+                    <div style="flex: 0 0 25%; min-width: 0">
                         <div class="p-2">
-                            <div><label>Comments</label></div>
+                            <div><label class="text-truncate d-block" title="Comments">Comments</label></div>
                             <div><input type="text" class="form-control" formControlName="managerComments" /></div>
                         </div>
                     </div>
-                    <div style="flex: 0 0 15%;">
+                    <div style="flex: 0 0 15%; min-width: 0">
                         <div class="p-2">
-                            <div><label>Decision</label></div>
+                            <div><label class="text-truncate d-block" title="Decision">Decision</label></div>
                             <div><input type="text" class="form-control" formControlName="managerDecision" /></div>
                         </div>
                     </div>
