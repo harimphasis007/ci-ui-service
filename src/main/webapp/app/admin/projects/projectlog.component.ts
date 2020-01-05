@@ -27,14 +27,14 @@ export class ProjectLogComponent implements OnInit {
   constructor(
     private activatedRoute: ActivatedRoute,
     private projectsService: ProjectsService,
-    config: NgbModalConfig,
+    private config: NgbModalConfig,
     private modal: NgbModal,
     private fb: FormBuilder,
     private accountService: AccountService
   ) {
     // customize default values of modals used by this component tree
-    config.backdrop = 'static';
-    config.keyboard = false;
+    this.config.backdrop = 'static';
+    this.config.keyboard = false;
     this.activatedRoute.paramMap.subscribe(params => {
       this.projectNo = +params.get('projectNo');
     });
@@ -58,7 +58,7 @@ export class ProjectLogComponent implements OnInit {
   }
 
   open(content) {
-    this.modal.open(content, { size: 'xl', centered: true });
+    this.modal.open(content, { size: 'lg', centered: true });
   }
 
   addLog() {

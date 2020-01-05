@@ -20,7 +20,7 @@ export class ProjectsComponent implements OnInit {
     'commitmentBalance',
     'commitmentExpiration'
   ];
-  dataSource;
+  dataSource: any;
   controlList: any;
   searchForm: FormGroup;
 
