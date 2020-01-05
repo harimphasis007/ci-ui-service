@@ -57,4 +57,28 @@ export class ProjectsService {
       'http://mvp-business-service.us-east-1.elasticbeanstalk.com:5000/services/businesservice/credit/check?projectNo=' + projectNo
     );
   }
+
+  getPoolDetails(projectNo: any) {
+    return this.httpClient.get(
+      'http://mvp-business-service.us-east-1.elasticbeanstalk.com:5000/services/businesservice/loanspoolbyproject/' + projectNo
+    );
+  }
+
+  getPoolListing(projectNo: any) {
+    return this.httpClient.get(
+      'http://mvp-business-service.us-east-1.elasticbeanstalk.com:5000/services/businesservice/loansbyproject/' + projectNo
+    );
+  }
+
+  getCommitmentsByProject(projectNo: any) {
+    return this.httpClient.get(
+      'http://mvp-business-service.us-east-1.elasticbeanstalk.com:5000/services/businesservice/commitmentsbyproject/' + projectNo
+    );
+  }
+
+  getDrawdownHistoriesByProject(projectNo: any) {
+    return this.httpClient.get(
+      'http://mvp-business-service.us-east-1.elasticbeanstalk.com:5000/services/businesservice/drawdownhistoriesbyproject/' + projectNo
+    );
+  }
 }

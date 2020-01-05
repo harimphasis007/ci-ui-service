@@ -49,7 +49,7 @@
                 <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
                         <div><label class="text-truncate d-block" title="Total Amount Requested">Total Amount Requested</label></div>
-                        <div><input type="text" class="form-control" formControlName="totalAmountRequested" /></div>
+                        <div><input type="text" class="form-control" formControlName="totalAmountRequested" [value]="snapshotForm.get('totalAmountRequested').value | currency : 'USD' : 'symbol' : '1.0-0'" /></div>
                     </div>
                 </div>
                 <div style="flex: 0 0 14.28%; min-width: 0">
