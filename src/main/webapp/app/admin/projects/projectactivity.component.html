@@ -84,9 +84,9 @@
             </div>
             <div class="my-3">
                 <div class="float-right">
-                    <button class="btn btn-primary px-3">Modify Commitment Expiration</button>
+                    <button class="btn btn-primary px-3" (click)="open(modifycommitment)">Modify Commitment Expiration</button>
                     <button class="btn btn-primary px-3">Cancel Commitment</button>
-                    <button class="btn btn-primary px-3">Expire Commitment</button>
+                    <button class="btn btn-primary px-3" (click)="open(expirecommitment)">Expire Commitment</button>
                     <button class="btn btn-secondary px-3">Re-Activate Commitment</button>
                 </div>
                 <div class="clearfix"></div>
@@ -109,13 +109,13 @@
                 <!-- Amount Expiring Column -->
                 <ng-container matColumnDef="amtExp">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Amount Expiring </th>
-                    <td mat-cell *matCellDef="let element"> {{element.amtExp}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.amtExp | currency : 'USD' : 'symbol' : '1.0-0'}} </td>
                 </ng-container>
 
                 <!-- Projected Remaining Availability Column -->
                 <ng-container matColumnDef="proReAvailability">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Projected Remaining Availability </th>
-                    <td mat-cell *matCellDef="let element"> {{element.proReAvailability}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.proReAvailability | currency : 'USD' : 'symbol' : '1.0-0'}} </td>
                 </ng-container>
 
                 <tr mat-header-row *matHeaderRowDef="displayedColumnsCommitmentsSchedule"></tr>
@@ -198,3 +198,45 @@
     </div>
 
 </div>
+
+<ng-template #modifycommitment let-c="close" let-d="dismiss" class="abc">
+        <div class="modal-header custom">
+            <h4 class="modal-title" id="modal-basic-title1">Modify Commitment Expiration</h4>
+        </div>
+        <div class="modal-body">
+            <div class="row mt-5 mb-3">
+                <div class="col-sm-3">
+                </div>
+                <div class="col-sm-6">
+                    <input type="text" class="form-control bdr-left-green" />
+                </div>
+                <div class="col-sm-3">                    &nbsp;
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn btn-primary px-3" (click)="c('Save click')"><fa-icon [icon]="['far', 'save']" class="mr-2"></fa-icon>Update</button>
+            <button ngbAutofocus class="btn btn-secondary ml-2 px-3" (click)="c('Cancel click')"><fa-icon icon="ban" class="mr-2"></fa-icon>Cancel</button>
+        </div>
+</ng-template>
+
+<ng-template #expirecommitment let-c="close" let-d="dismiss" class="abc">
+    <div class="modal-header custom">
+        <h4 class="modal-title" id="modal-basic-title2">Expire Commitment</h4>
+    </div>
+    <div class="modal-body">
+        <div class="row mt-5 mb-3">
+            <div class="col-sm-3">
+            </div>
+            <div class="col-sm-6">
+                <input type="text" class="form-control bdr-left-green" />
+            </div>
+            <div class="col-sm-3">                    &nbsp;
+            </div>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <button class="btn btn-primary px-3" (click)="c('Save click')"><fa-icon [icon]="['far', 'save']" class="mr-2"></fa-icon>Update</button>
+        <button ngbAutofocus class="btn btn-secondary ml-2 px-3" (click)="c('Cancel click')"><fa-icon icon="ban" class="mr-2"></fa-icon>Cancel</button>
+    </div>
+</ng-template>

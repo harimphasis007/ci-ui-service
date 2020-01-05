@@ -5,6 +5,7 @@ import { ProjectsService } from './projects.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
+import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'jhi-projectactivity',
@@ -37,13 +38,29 @@ export class ProjectActivityComponent implements OnInit {
 
   displayedColumnsCommitmentsSchedule: string[] = ['expDate', 'amtExp', 'proReAvailability'];
 
-  constructor(private activatedRoute: ActivatedRoute, private fb: FormBuilder, private projectsService: ProjectsService) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
+    private projectsService: ProjectsService,
+    private config: NgbModalConfig,
+    private modal: NgbModal
+  ) {
+    this.config.backdrop = 'static';
+    this.config.keyboard = false;
+
     this.activatedRoute.paramMap.subscribe(params => {
       this.projectNo = +params.get('projectNo');
     });
 
     this.projectsService.getCommitmentsByProject(this.projectNo).subscribe((res: any) => {
       this.commitmentInfo = res;
+      this.commitmentsScheduleList = [
+        {
+          expDate: this.commitmentInfo.commitmentExpiration,
+          amtExp: this.commitmentInfo.commitmentBal,
+          proReAvailability: this.commitmentInfo.avaiableBal
+        }
+      ];
       this.commitmentForm.patchValue({
         commitmentStatus: this.commitmentInfo.commitmentStatus,
         commitmentBal: this.commitmentInfo.commitmentBal,
@@ -53,6 +70,8 @@ export class ProjectActivityComponent implements OnInit {
         totalDrawdowns: this.commitmentInfo.totalDrawdowns,
         recentDrawdown: this.commitmentInfo.recentDrawdown
       });
+      this.dataSourceCommitmentsSchedule = new MatTableDataSource(this.commitmentsScheduleList);
+      this.dataSourceCommitmentsSchedule.sort = this.sort1;
     });
 
     this.projectsService.getDrawdownHistoriesByProject(this.projectNo).subscribe((res: any) => {
@@ -74,5 +93,9 @@ export class ProjectActivityComponent implements OnInit {
       totalDrawdowns: [{ value: null, disabled: true }],
       recentDrawdown: [{ value: null, disabled: true }]
     });
+  }
+
+  open(content) {
+    this.modal.open(content, { size: 'lg', centered: true });
   }
 }
