@@ -28,7 +28,7 @@
         <div class="float-left">Select Project</div>
         <div class="float-right">
             <span class="header-page">
-                Show <mat-paginator #paginator [pageSizeOptions]="[2, 4, 10]"></mat-paginator> entries
+                Show <mat-paginator #paginator [pageSizeOptions]="[5, 10, 15]"></mat-paginator> entries
             </span>
             <button class="btn btn-secondary px-3" (click)="exporter.exportTable('csv')"><fa-icon [icon]="['far', 'file']" class="mr-2"></fa-icon>CSV</button>
             <button class="btn btn-secondary px-3" (click)="exporter.exportTable('xls')"><fa-icon icon="file-excel" class="mr-2"></fa-icon>XLS</button>
@@ -78,7 +78,7 @@
              <!-- Commitment Balance Column -->
              <ng-container matColumnDef="commitmentBalance">
                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Commitment Balance </th>
-                 <td mat-cell *matCellDef="let element"> {{element.commitmentBalance}} </td>
+                 <td mat-cell *matCellDef="let element"> {{element.commitmentBalance | currency : 'USD' : 'symbol' : '1.0-0'}} </td>
              </ng-container>
 
              <!-- Commitment Expiration Column -->
