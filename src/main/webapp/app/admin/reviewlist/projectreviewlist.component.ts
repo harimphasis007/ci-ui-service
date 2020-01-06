@@ -12,13 +12,12 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class ProjectReviewListComponent implements OnInit {
   displayedColumns: string[] = [
     'projectNo',
-    'projName',
     'program',
     'member',
-    'projectStatus',
-    'commitmentStatus',
-    'commitmentBalance',
-    'commitmentExpiration'
+    'application.createdOn',
+    'application.createdBy',
+    'application.currentCompletePer',
+    'application.lastUpdatedOn'
   ];
   dataSource;
   controlList: any;

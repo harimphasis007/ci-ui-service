@@ -11,6 +11,7 @@ import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
   templateUrl: './projectcontacts.component.html'
 })
 export class ProjectContactsComponent implements OnInit {
+  info: any;
   projectNo: any;
   notificationList: any;
   contactsList: any;
@@ -38,6 +39,10 @@ export class ProjectContactsComponent implements OnInit {
   ) {
     this.activatedRoute.paramMap.subscribe(params => {
       this.projectNo = +params.get('projectNo');
+    });
+
+    this.projectsService.getProjectInfoBeneficiaries(this.projectNo).subscribe((res: any) => {
+      this.info = res;
     });
 
     this.projectsService.getEmailNotificationsAndContacts(this.projectNo).subscribe((res: any) => {

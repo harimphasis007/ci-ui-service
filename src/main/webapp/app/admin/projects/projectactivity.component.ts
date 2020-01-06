@@ -5,13 +5,14 @@ import { ProjectsService } from './projects.service';
 import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatPaginator } from '@angular/material/paginator';
-import { NgbModalConfig, NgbModal } from '@ng-bootstrap/ng-bootstrap';
+import { NgbModalConfig, NgbModal, NgbDate, NgbCalendar, NgbDateParserFormatter } from '@ng-bootstrap/ng-bootstrap';
 
 @Component({
   selector: 'jhi-projectactivity',
   templateUrl: './projectactivity.component.html'
 })
 export class ProjectActivityComponent implements OnInit {
+  info: any;
   projectNo: any;
   commitmentForm: FormGroup;
   commitmentInfo: any;
@@ -19,6 +20,7 @@ export class ProjectActivityComponent implements OnInit {
   dataSourceDrawdowns: any;
   commitmentsScheduleList: any;
   dataSourceCommitmentsSchedule: any;
+  fromDate: NgbDate;
 
   @ViewChild('sort1', { static: true }) sort1: MatSort;
   @ViewChild('sort2', { static: true }) sort2: MatSort;
@@ -43,13 +45,19 @@ export class ProjectActivityComponent implements OnInit {
     private fb: FormBuilder,
     private projectsService: ProjectsService,
     private config: NgbModalConfig,
-    private modal: NgbModal
+    private modal: NgbModal,
+    private calendar: NgbCalendar,
+    private formatter: NgbDateParserFormatter
   ) {
     this.config.backdrop = 'static';
     this.config.keyboard = false;
-
+    this.fromDate = calendar.getToday();
     this.activatedRoute.paramMap.subscribe(params => {
       this.projectNo = +params.get('projectNo');
+    });
+
+    this.projectsService.getProjectInfoBeneficiaries(this.projectNo).subscribe((res: any) => {
+      this.info = res;
     });
 
     this.projectsService.getCommitmentsByProject(this.projectNo).subscribe((res: any) => {

@@ -12,13 +12,15 @@ import { FormGroup, FormBuilder } from '@angular/forms';
 export class ProjectPipelineComponent implements OnInit {
   displayedColumns: string[] = [
     'projectNo',
-    'projName',
     'program',
     'member',
+    'application.applicationDate',
     'projectStatus',
-    'commitmentStatus',
-    'commitmentBalance',
-    'commitmentExpiration'
+    'application.applicationReviewStatus',
+    'currentAssign',
+    'currentAssStDate',
+    'analystsAssigned',
+    'managersAssigned'
   ];
   dataSource;
   controlList: any;
