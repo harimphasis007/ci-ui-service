@@ -11,6 +11,7 @@ import { MatPaginator, PageEvent } from '@angular/material/paginator';
   templateUrl: './projectpool.component.html'
 })
 export class ProjectPoolComponent implements OnInit {
+  info: any;
   projectNo: any;
   poolDetailsForm: FormGroup;
   poolInfo: any;
@@ -34,6 +35,9 @@ export class ProjectPoolComponent implements OnInit {
   constructor(private activatedRoute: ActivatedRoute, private projectsService: ProjectsService, private fb: FormBuilder) {
     this.activatedRoute.paramMap.subscribe(params => {
       this.projectNo = +params.get('projectNo');
+    });
+    this.projectsService.getProjectInfoBeneficiaries(this.projectNo).subscribe((res: any) => {
+      this.info = res;
     });
 
     this.projectsService.getPoolDetails(this.projectNo).subscribe((res: any) => {

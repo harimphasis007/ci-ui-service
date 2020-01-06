@@ -84,7 +84,7 @@
              <!-- Commitment Expiration Column -->
              <ng-container matColumnDef="commitmentExpiration">
                  <th mat-header-cell *matHeaderCellDef mat-sort-header> Commitment Expiration </th>
-                 <td mat-cell *matCellDef="let element"> {{element.commitmentExpiration | date:'MM/dd/y'}} </td>
+                 <td mat-cell *matCellDef="let element"> {{element.commitmentExpiration}} </td>
              </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>

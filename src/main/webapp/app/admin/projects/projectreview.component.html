@@ -9,7 +9,7 @@
                     <span>Projects</span>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#">#{{projectNo}}</a>
+                    <a href="#">#{{projectNo}} - {{info?.projName}}</a>
                 </li>
             </ol>
         </div>
@@ -42,7 +42,7 @@
                     <div class="py-2 pr-2">
                         <div class="text-truncate"><label class="text-truncate d-block" title="Application Date">Application Date</label></div>
                         <div>
-                            <input type="text" class="form-control" formControlName="applicationDate" [value]="snapshotForm.get('applicationDate').value | date:'MM/dd/y'" />
+                            <input type="text" class="form-control" formControlName="applicationDate" />
                         </div>
                     </div>
                 </div>
@@ -55,7 +55,7 @@
                 <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
                         <div><label class="text-truncate d-block" title="Analyst Review End Date">Analyst Review End Date</label></div>
-                        <div><input type="text" class="form-control" formControlName="analystReviewEndDate" [value]="snapshotForm.get('analystReviewEndDate').value | date:'MM/dd/y'" /></div>
+                        <div><input type="text" class="form-control" formControlName="analystReviewEndDate" /></div>
                     </div>
                 </div>
                 <div style="flex: 0 0 14.28%; min-width: 0">
@@ -67,7 +67,7 @@
                 <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
                         <div><label class="text-truncate d-block" title="Manager Review End Date">Manager Review End Date</label></div>
-                        <div><input type="text" class="form-control" formControlName="managerReviewEndDate" [value]="snapshotForm.get('managerReviewEndDate').value | date:'MM/dd/y'" /></div>
+                        <div><input type="text" class="form-control" formControlName="managerReviewEndDate" /></div>
                     </div>
                 </div>
                 <div style="flex: 0 0 14.28%; min-width: 0">
@@ -79,7 +79,7 @@
                 <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="py-2 pl-2">
                         <div><label class="text-truncate d-block" title="Notification Sent Date">Notification Sent Date</label></div>
-                        <div><input type="text" class="form-control" formControlName="notificationSentDate" [value]="snapshotForm.get('notificationSentDate').value | date:'MM/dd/y'" /></div>
+                        <div><input type="text" class="form-control" formControlName="notificationSentDate" /></div>
                     </div>
                 </div>
                 <div style="flex: 0 0 14.28%; min-width: 0">
@@ -97,7 +97,18 @@
                 <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
                         <div><label class="text-truncate d-block" title="Certification: Date">Certification: Date</label></div>
-                        <div><input type="text" class="form-control bdr-left-green" formControlName="certificationDate" [value]="snapshotForm.get('certificationDate').value | date:'MM/dd/y'" /></div>
+                        <div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <input type="text" class="form-control bdr-left-green" formControlName="certificationDate" />
+                                    <div class="input-group-append">
+                                        <button class="btn"  type="button" style="border: 1px solid #ced4da;">
+                                            <fa-icon icon="calendar-alt"></fa-icon>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <div style="flex: 0 0 14.28%; min-width: 0">
@@ -138,7 +149,7 @@
                 <div style="flex: 0 0 14.28%; min-width: 0">
                     <div class="p-2">
                         <div><label class="text-truncate d-block" title="Current Assingment Start Date">Current Assingment Start Date</label></div>
-                        <div><input type="text" class="form-control" formControlName="currentAssignmentStartDate" [value]="snapshotForm.get('currentAssignmentStartDate').value | date:'MM/dd/y'" /></div>
+                        <div><input type="text" class="form-control" formControlName="currentAssignmentStartDate" /></div>
                     </div>
                 </div>
                 <div style="flex: 0 0 14.28%; min-width: 0">
@@ -186,13 +197,13 @@
                     <div style="flex: 0 0 15%; min-width: 0">
                         <div class="p-2">
                             <div><label class="text-truncate d-block" title="Review Start Date">Review Start Date</label></div>
-                            <div><input type="text" class="form-control" formControlName="analystReviewStartDate" [value]="snapshotForm.get('analystReviewStartDate').value | date:'MM/dd/y'" /></div>
+                            <div><input type="text" class="form-control" formControlName="analystReviewStartDate" /></div>
                         </div>
                     </div>
                     <div style="flex: 0 0 15%; min-width: 0">
                         <div class="p-2">
                             <div><label class="text-truncate d-block" title="Review End Date">Review End Date</label></div>
-                            <div><input type="text" class="form-control" formControlName="analystReviewEndDate" [value]="snapshotForm.get('analystReviewEndDate').value | date:'MM/dd/y'" /></div>
+                            <div><input type="text" class="form-control" formControlName="analystReviewEndDate" /></div>
                         </div>
                     </div>
                     <div style="flex: 0 0 15%; min-width: 0">
@@ -213,6 +224,8 @@
                             <div>
                                 <select class="form-control" formControlName="analystRecommendation">
                                     <option value="null">Select Recommendation</option>
+                                    <option value="Approved">Approved</option>
+                                    <option value="Rejected">Rejected</option>
                                 </select>
                             </div>
                         </div>
@@ -234,13 +247,13 @@
                     <div style="flex: 0 0 15%; min-width: 0">
                         <div class="p-2">
                             <div><label class="text-truncate d-block" title="Review Start Date">Review Start Date</label></div>
-                            <div><input type="text" class="form-control" formControlName="managerReviewStartDate" [value]="snapshotForm.get('managerReviewStartDate').value | date:'MM/dd/y'" /></div>
+                            <div><input type="text" class="form-control" formControlName="managerReviewStartDate" /></div>
                         </div>
                     </div>
                     <div style="flex: 0 0 15%; min-width: 0">
                         <div class="p-2">
                             <div><label class="text-truncate d-block" title="Review End Date">Review End Date</label></div>
-                            <div><input type="text" class="form-control" formControlName="managerReviewEndDate" [value]="snapshotForm.get('managerReviewEndDate').value | date:'MM/dd/y'" /></div>
+                            <div><input type="text" class="form-control" formControlName="managerReviewEndDate" /></div>
                         </div>
                     </div>
                     <div style="flex: 0 0 15%; min-width: 0">
@@ -258,7 +271,13 @@
                     <div style="flex: 0 0 15%; min-width: 0">
                         <div class="p-2">
                             <div><label class="text-truncate d-block" title="Decision">Decision</label></div>
-                            <div><input type="text" class="form-control" formControlName="managerDecision" /></div>
+                            <div>
+                                <select class="form-control" formControlName="managerDecision">
+                                    <option value="null">Select Decision</option>
+                                    <option value="Approved">Approved</option>
+                                    <option value="Rejected">Rejected</option>
+                                </select>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -268,7 +287,7 @@
 
     <div class="mx-2 my-4">
         <div class="float-right">
-            <button class="btn btn-primary px-3" ><fa-icon [icon]="['far', 'save']" class="mr-2"></fa-icon>Update</button>
+            <button class="btn btn-primary px-3" (click)="addLog()"><fa-icon [icon]="['far', 'save']" class="mr-2"></fa-icon>Update</button>
             <button class="btn btn-secondary ml-2 px-3"><fa-icon icon="ban" class="mr-2"></fa-icon>Cancel</button>
         </div>
         <div class="clearfix"></div>

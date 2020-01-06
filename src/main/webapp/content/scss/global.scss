@@ -452,3 +452,7 @@ table {
     border-top-width: 0px !important;
   }
 }
+
+.form-control[readonly] {
+  background-color: #ffffff;
+}
