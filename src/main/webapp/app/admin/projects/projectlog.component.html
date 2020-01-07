@@ -9,7 +9,7 @@
                     <span>Projects</span>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#">#{{projectNo}}</a>
+                    <a href="#">#{{projectNo}} - {{info?.projName}}</a>
                 </li>
             </ol>
         </div>
@@ -47,19 +47,19 @@
             <table mat-table [dataSource]="logList" matSort #sort="matSort" class="mat-elevation-z8">
                 <!-- Project Date Column -->
                 <ng-container matColumnDef="projectDate">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Date </th>
-                    <td mat-cell *matCellDef="let element"> {{element.projectDate | date:'MM/dd/y hh:mm a'}} </td>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 25%"> Date </th>
+                    <td mat-cell *matCellDef="let element"> {{element.projectDate | date:'yyyy-MM-dd'}} </td>
                 </ng-container>
 
                 <!-- Project User Column -->
                 <ng-container matColumnDef="projectUser">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> User </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 25%"> User </th>
                     <td mat-cell *matCellDef="let element"> {{element.projectUser}} </td>
                 </ng-container>
 
                 <!-- Entry Details Column -->
                 <ng-container matColumnDef="entryDetails">
-                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Entry Details </th>
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 50%"> Entry Details </th>
                     <td mat-cell *matCellDef="let element"> {{element.entryDetails}} </td>
                 </ng-container>
 
@@ -113,7 +113,7 @@
                     <div class="text-right"><span class="font-weight-bold">Date</span></div>
                 </div>
                 <div class="col-sm-4">
-                    <input type="text" class="form-control" formControlName="addLogDate" [value]="currentDate | date : 'MM/dd/yyyy hh:mm a'" />
+                    <input type="text" class="form-control" formControlName="addLogDate" />
                 </div>
                 <div class="col-sm-4">
                     &nbsp;

@@ -2,24 +2,34 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { ProjectsService } from './projects.service';
+import { BUSINESS_SERVICE_URL } from './projects.constants';
+import { DatePipe } from '@angular/common';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'jhi-projectreview',
   templateUrl: './projectreview.component.html'
 })
 export class ProjectReviewComponent implements OnInit {
+  info: any;
   projectNo: any;
   snapshotForm: FormGroup;
   reviewForm: FormGroup;
   reviewInfo: any;
   runningCreditCheck: boolean;
   creditCheckResult: any;
-  constructor(private activatedRoute: ActivatedRoute, private fb: FormBuilder, private projectsService: ProjectsService) {
+  constructor(
+    private activatedRoute: ActivatedRoute,
+    private fb: FormBuilder,
+    private projectsService: ProjectsService,
+    private datePipe: DatePipe,
+    private httpClient: HttpClient
+  ) {
     this.activatedRoute.paramMap.subscribe(params => {
       this.projectNo = +params.get('projectNo');
-      if (this.projectNo) {
-        // eslint-disable-next-line no-console
-      }
+    });
+    this.projectsService.getProjectInfoBeneficiaries(this.projectNo).subscribe((res: any) => {
+      this.info = res;
     });
     this.projectsService.getApplicationReviewDetails(this.projectNo).subscribe((res: any) => {
       this.reviewInfo = res;
@@ -106,5 +116,45 @@ export class ProjectReviewComponent implements OnInit {
       // eslint-disable-next-line no-console
       console.log(res);
     });
+  }
+
+  patchValueAnalyst() {
+    this.snapshotForm.patchValue({
+      analystComments: null,
+      analystRecommendation: null
+    });
+  }
+
+  addLog() {
+    const entryDetails =
+      (this.snapshotForm.controls['analystRecommendation'].value === null ||
+      this.snapshotForm.controls['analystRecommendation'].value === 'null'
+        ? ''
+        : this.snapshotForm.controls['analystRecommendation'].value + ' - ') +
+      (this.snapshotForm.controls['analystComments'].value === null || this.snapshotForm.controls['analystComments'].value === ''
+        ? ''
+        : this.snapshotForm.controls['analystComments'].value);
+    const url =
+      BUSINESS_SERVICE_URL +
+      '/projects/addProjectLog?projectNo=' +
+      this.projectNo +
+      '&projectDate=' +
+      this.datePipe.transform(new Date(), 'yyyy-MM-dd') +
+      '&projectUser=' +
+      this.snapshotForm.controls['assignedAnalyst'].value +
+      '&entryDetails=' +
+      entryDetails;
+    this.httpClient.post(url, '').subscribe(
+      data => {
+        this.patchValueAnalyst();
+        // eslint-disable-next-line no-console
+        console.log(data);
+      },
+      error => {
+        this.patchValueAnalyst();
+        // eslint-disable-next-line no-console
+        console.log(error);
+      }
+    );
   }
 }

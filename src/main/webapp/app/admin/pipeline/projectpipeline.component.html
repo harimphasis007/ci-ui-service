@@ -22,7 +22,7 @@
         <div class="float-left">Activity Pipeline</div>
         <div class="float-right">
             <span class="header-page">
-                Show <mat-paginator #paginator [pageSizeOptions]="[2, 4, 10]"></mat-paginator> entries
+                Show <mat-paginator #paginator [pageSizeOptions]="[5, 10, 15]"></mat-paginator> entries
             </span>
             <button class="btn btn-secondary px-3" (click)="exporter.exportTable('csv')"><fa-icon [icon]="['far', 'file']" class="mr-2"></fa-icon>CSV</button>
             <button class="btn btn-secondary px-3" (click)="exporter.exportTable('xls')"><fa-icon icon="file-excel" class="mr-2"></fa-icon>XLS</button>
@@ -36,13 +36,7 @@
             <!-- Project No. Column -->
             <ng-container matColumnDef="projectNo">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Project No. </th>
-                <td mat-cell *matCellDef="let element"> {{element.projectNo}} </td>
-            </ng-container>
-
-            <!-- Project Name Column -->
-            <ng-container matColumnDef="projName">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Name </th>
-                <td mat-cell *matCellDef="let element"> {{element.projName}} </td>
+                <td mat-cell *matCellDef="let element"> <a class="font-weight-normal text-primary" [routerLink]="['../../projects/detail/', element.projectNo]">{{element.projectNo}}</a> </td>
             </ng-container>
 
             <!-- Program Column -->
@@ -57,32 +51,58 @@
                 <td mat-cell *matCellDef="let element"> {{element.member}} </td>
             </ng-container>
 
+            <!-- Application Date Column -->
+            <ng-container matColumnDef="application.applicationDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Application Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.application.applicationDate}} </td>
+            </ng-container>
+
             <!-- Project Status Column -->
             <ng-container matColumnDef="projectStatus">
                 <th mat-header-cell *matHeaderCellDef mat-sort-header> Project Status </th>
                 <td mat-cell *matCellDef="let element"> {{element.projectStatus}} </td>
             </ng-container>
 
-            <!-- Commitment Status Column -->
-            <ng-container matColumnDef="commitmentStatus">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Commitment Status </th>
-                <td mat-cell *matCellDef="let element"> {{element.commitmentStatus}} </td>
-            </ng-container>
-
             <!-- Commitment Balance Column -->
-            <ng-container matColumnDef="commitmentBalance">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Commitment Balance </th>
-                <td mat-cell *matCellDef="let element"> {{element.commitmentBalance}} </td>
+            <ng-container matColumnDef="application.applicationReviewStatus">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Application Review Status </th>
+                <td mat-cell *matCellDef="let element"> {{element.application.applicationReviewStatus}} </td>
             </ng-container>
 
             <!-- Commitment Expiration Column -->
-            <ng-container matColumnDef="commitmentExpiration">
-                <th mat-header-cell *matHeaderCellDef mat-sort-header> Commitment Expiration </th>
-                <td mat-cell *matCellDef="let element"> {{element.commitmentExpiration}} </td>
+            <ng-container matColumnDef="currentAssign">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Current Assignment </th>
+                <td mat-cell *matCellDef="let element"> {{element.currentAssign}} </td>
+            </ng-container>
+
+            <!-- Commitment Expiration Column -->
+            <ng-container matColumnDef="currentAssStDate">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Current Assignment Start Date </th>
+                <td mat-cell *matCellDef="let element"> {{element.currentAssStDate}} </td>
+            </ng-container>
+
+            <!-- Commitment Expiration Column -->
+            <ng-container matColumnDef="analystsAssigned">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Analyst Assignment </th>
+                <td mat-cell *matCellDef="let element">
+                    <select class="form-control" style="height: calc(1.5em + 0.75rem - 4px)">
+                        <option *ngFor="let analyst of element.analystsAssigned; let i = index" [value]="analyst">{{analyst}}</option>
+                    </select>
+                </td>
+            </ng-container>
+
+            <!-- Commitment Expiration Column -->
+            <ng-container matColumnDef="managersAssigned">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Manager Assignment </th>
+                <td mat-cell *matCellDef="let element">
+                    <select class="form-control" style="height: calc(1.5em + 0.75rem - 4px)">
+                        <option *ngFor="let manager of element.managersAssigned; let i = index" [value]="manager">{{manager}}</option>
+                    </select>
+                </td>
             </ng-container>
 
             <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
-            <tr mat-row *matRowDef="let row; let even = even; columns: displayedColumns;" [ngClass]="{'gray': even}" [routerLink]="['../../projects/detail/', row.projectNo]" class="cursor-pointer"></tr>
+            <tr mat-row *matRowDef="let row; let even = even; columns: displayedColumns;" [ngClass]="{'gray': even}"></tr>
         </table>
         <mat-paginator (page)="syncPrimaryPaginator($event)"
                        [pageSize]="paginator.pageSize" [pageIndex]="paginator.pageIndex"

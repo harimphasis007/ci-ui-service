@@ -9,7 +9,7 @@
                     <span>Projects</span>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#">#{{projectNo}}</a>
+                    <a href="#">#{{projectNo}} - {{info?.projName}}</a>
                 </li>
             </ol>
         </div>
@@ -118,7 +118,7 @@
                 <!-- Settlement Date Column -->
                 <ng-container matColumnDef="settelmentDate">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Settlement Date </th>
-                    <td mat-cell *matCellDef="let element"> {{element.settelmentDate}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.settelmentDate  | date:'MM/dd/y'}} </td>
                 </ng-container>
 
                 <!-- Amount Column -->

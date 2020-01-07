@@ -9,7 +9,7 @@
                     <span>Projects</span>
                 </li>
                 <li class="breadcrumb-item">
-                    <a href="#">#{{projectNo}}</a>
+                    <a href="#">#{{projectNo}} - {{info?.projName}}</a>
                 </li>
             </ol>
         </div>
@@ -91,7 +91,7 @@
                 <!-- Project No. Column -->
                 <ng-container matColumnDef="sentDate">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Sent Date </th>
-                    <td mat-cell *matCellDef="let element"> {{element.sentDate | date:'MM/dd/y'}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.sentDate}} </td>
                 </ng-container>
 
                 <!-- Project Name Column -->
@@ -103,13 +103,13 @@
                 <!-- Program Column -->
                 <ng-container matColumnDef="toEmailAddress">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> To Address(es) </th>
-                    <td mat-cell *matCellDef="let element"> {{element.toEmailAddress}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.toEmailAddress.join(', ')}} </td>
                 </ng-container>
 
                 <!-- Member Column -->
                 <ng-container matColumnDef="ccEmailAddress">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header> Cc </th>
-                    <td mat-cell *matCellDef="let element"> {{element.ccEmailAddress}} </td>
+                    <td mat-cell *matCellDef="let element"> {{element.ccEmailAddress.join(', ')}} </td>
                 </ng-container>
 
                 <!-- Project Status Column -->
