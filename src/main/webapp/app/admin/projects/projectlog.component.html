@@ -44,7 +44,7 @@
             <div class="clearfix"></div>
         </div>
         <div class="m-2">
-            <table mat-table [dataSource]="logList" matSort #sort="matSort" class="mat-elevation-z8">
+            <table mat-table [dataSource]="logList" matSort #sort="matSort" class="mat-elevation-z8" matSortActive="projectDate" matSortDirection="desc" matSortDisableClear>
                 <!-- Project Date Column -->
                 <ng-container matColumnDef="projectDate">
                     <th mat-header-cell *matHeaderCellDef mat-sort-header style="width: 25%"> Date </th>
@@ -70,6 +70,7 @@
         </div>
     </div>
 
+    <form [formGroup]="searchForm">
     <div class="my-3">
         <div class="ci-card-title">
             <div>Search Control</div>
@@ -79,23 +80,24 @@
                 <div style="flex: 0 0 20%;">
                     <div class="py-2 pr-2">
                         <div><label>User</label></div>
-                        <div><input type="text" class="form-control" /></div>
+                        <div><input type="text" class="form-control" formControlName="searchUser" /></div>
                     </div>
                 </div>
                 <div style="flex: 0 0 20%;">
                     <div class="p-2">
                         <div><label>Entry Detail</label></div>
-                        <div><input type="text" class="form-control" /></div>
+                        <div><input type="text" class="form-control" formControlName="searchEntry" /></div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
+    </form>
 
     <div class="mx-2 my-3">
         <div class="float-right">
             <button class="btn btn-primary px-3"><fa-icon icon="search" class="mr-2"></fa-icon>Search</button>
-            <button class="btn btn-secondary ml-2 px-3">Reset</button>
+            <button class="btn btn-secondary ml-2 px-3" (click)="resetForm()">Reset</button>
         </div>
         <div class="clearfix"></div>
     </div>
@@ -144,7 +146,7 @@
         </div>
         <div class="modal-footer">
             <button class="btn btn-primary px-3" (click)="addLog();c('Save click')"><fa-icon [icon]="['far', 'save']" class="mr-2"></fa-icon>Save</button>
-            <button ngbAutofocus class="btn btn-secondary ml-2 px-3" (click)="c('Cancel click')"><fa-icon icon="ban" class="mr-2"></fa-icon>Cancel</button>
+            <button ngbAutofocus class="btn btn-secondary ml-2 px-3" (click)="c('Cancel click');patchValueAddLog()"><fa-icon icon="ban" class="mr-2"></fa-icon>Cancel</button>
         </div>
     </form>
 </ng-template>

@@ -36,8 +36,8 @@ export class ProjectReviewListComponent implements OnInit {
     });
     this.searchForm = this.fb.group({
       applicationNo: '',
-      program: [null],
-      member: [null]
+      program: 'null',
+      member: 'null'
     });
   }
 
@@ -63,6 +63,14 @@ export class ProjectReviewListComponent implements OnInit {
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+    });
+  }
+
+  resetForm() {
+    this.searchForm.patchValue({
+      applicationNo: '',
+      program: 'null',
+      member: 'null'
     });
   }
 }
