@@ -23,6 +23,7 @@ export class ProjectLogComponent implements OnInit {
   logList: any;
   displayedLogColumns: string[] = ['projectDate', 'projectUser', 'entryDetails'];
   addLogForm: FormGroup;
+  searchForm: FormGroup;
   currentDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
   dataSource: any;
   @ViewChild('sort', { static: true }) sort: MatSort;
@@ -58,6 +59,10 @@ export class ProjectLogComponent implements OnInit {
       addLogDate: [{ value: this.currentDate, disabled: true }],
       addLogUser: [{ value: this.account.login, disabled: true }],
       addLogEntry: [{ value: '', disabled: false }]
+    });
+    this.searchForm = this.fb.group({
+      searchUser: [{ value: '', disabled: false }],
+      searchEntry: [{ value: '', disabled: false }]
     });
   }
 
@@ -105,5 +110,12 @@ export class ProjectLogComponent implements OnInit {
         console.log(error);
       }
     );
+  }
+
+  resetForm() {
+    this.searchForm.patchValue({
+      searchUser: '',
+      searchEntry: ''
+    });
   }
 }
