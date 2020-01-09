@@ -44,11 +44,11 @@
                     <div><label class="font-weight-bold">Info/Indicators</label></div>
                     <div class="project-check-group px-2 py-3 mr-4">
                         <div class="custom-control-inline custom-radio custom-control">
-                            <input type="radio" class="custom-control-input" id="customRadio" value="Urban" formControlName="programType" />
+                            <input type="radio" class="custom-control-input" id="customRadio" value="urban" formControlName="programType" />
                             <label class="custom-control-label text-secondary" for="customRadio">Urban</label>
                         </div>
                         <div class="custom-control-inline custom-radio custom-control">
-                            <input type="radio" class="custom-control-input" id="customRadio2" formControlName="programType" value="Rural" />
+                            <input type="radio" class="custom-control-input" id="customRadio2" formControlName="programType" value="rural" />
                             <label class="custom-control-label text-secondary" for="customRadio2">Rural</label>
                         </div>
                         <br />
@@ -230,8 +230,11 @@
         </div>
         <div class="mx-2 my-4">
             <div class="float-right">
-                <button class="btn btn-primary px-3" (click)="submitForm()"><fa-icon [icon]="['far', 'save']" class="mr-2"></fa-icon>Update</button>
-                <button class="btn btn-secondary ml-2 px-3"><fa-icon icon="ban" class="mr-2"></fa-icon>Cancel</button>
+                <button [ngClass]="updating ? 'btn-secondary' : 'btn-primary'" class="btn px-3" (click)="submitForm()">
+                    <fa-icon *ngIf="!updating" [icon]="['far', 'save']" class="mr-2"></fa-icon>
+                    <fa-icon *ngIf="updating" icon="spinner" [spin]="true" class="mr-2"></fa-icon>Update</button>
+
+                <button class="btn btn-secondary ml-2 px-3" routerLink="../../../projects"><fa-icon icon="ban" class="mr-2"></fa-icon>Cancel</button>
             </div>
             <div class="clearfix"></div>
         </div>

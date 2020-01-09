@@ -40,10 +40,10 @@ export class ProjectPipelineComponent implements OnInit {
     this.searchForm = this.fb.group({
       projectNo: '',
       projectName: '',
-      program: [null],
-      member: [null],
-      projectStatus: [null],
-      commitmentStatus: [null]
+      program: 'null',
+      member: 'null',
+      projectStatus: 'null',
+      commitmentStatus: 'null'
     });
   }
 
@@ -69,6 +69,17 @@ export class ProjectPipelineComponent implements OnInit {
       this.dataSource = new MatTableDataSource(res);
       this.dataSource.paginator = this.paginator;
       this.dataSource.sort = this.sort;
+    });
+  }
+
+  resetForm() {
+    this.searchForm.patchValue({
+      projectNo: '',
+      projectName: '',
+      program: 'null',
+      member: 'null',
+      projectStatus: 'null',
+      commitmentStatus: 'null'
     });
   }
 }
